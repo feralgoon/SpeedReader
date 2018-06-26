@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/lib/bootstrap/css/bootstrap.min.css">
+    <script src="/assets/lib/jquery/jquery.min.js"></script>
+    <script src="/assets/lib/bootstrap/js/bootstrap.min.js"></script>
+    <title>Sign Up</title>
+</head>
+<body>
+@nav.render("")
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 text-center">
+            <form method="post">
+                @helper.CSRF.formField
+                Username: <input class="text-center form-control" name="username" maxlength="15" id="username" type="text"><br>
+                Email:    <input class="text-center form-control" name="email" maxlength="50" id="email" type="text"><br>
+                Password: <input class="text-center form-control" name="password" maxlength="20" id="password" type="password"><br>
+                Re-Enter Password: <input class="text-center form-control" name="passwordAgain" maxlength="20" id="passwordAgain" type="password">
+                <br>
+                <button type="submit" class="btn btn-primary" value="Create Account">Create Account</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
