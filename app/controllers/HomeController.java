@@ -50,8 +50,8 @@ public class HomeController extends Controller
         Patron currentUser = jpaApi.em().createQuery(sql,Patron.class).setParameter("currentUser",session().get("User")).getSingleResult();
 
         sql = "SELECT s.sourceLink FROM Source s " +
-                        "JOIN Subscription sub ON s.sourceId = sub.sourceId " +
-                        "WHERE sub.patronId = :patronId ";
+                    "JOIN Subscription sub ON s.sourceId = sub.sourceId " +
+                    "WHERE sub.patronId = :patronId ";
 
         List<String> sources = jpaApi.em().createQuery(sql,String.class).setParameter("patronId",currentUser.getPatronId()).getResultList();
 
@@ -114,8 +114,10 @@ public class HomeController extends Controller
             entries.clear();
         }
         sql = "SELECT p FROM Post p " +
+                "JOIN Subscription s ON p.sourceId = s.sourceId " +
+                "WHERE s.patronId = :currentUser " +
                 "ORDER BY Date DESC ";
-        List<Post> postList = jpaApi.em().createQuery(sql,Post.class).setMaxResults(30).getResultList();
+        List<Post> postList = jpaApi.em().createQuery(sql,Post.class).setParameter("currentUser",currentUser.getPatronId()).setMaxResults(30).getResultList();
 
         StringBuilder testBuilder = new StringBuilder();
         testBuilder.append("<div class=\"container\"><div class=\"row\"><div class=\"scrolldiv col-md-10 offset-md-1\">");
