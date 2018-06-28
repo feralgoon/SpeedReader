@@ -5,6 +5,15 @@
 GET     /                           controllers.HomeController.index
 
 GET     /signup                     controllers.AccountController.getSignup
+POST    /signup                     controllers.AccountController.postSignup
+
+GET     /login                      controllers.AccountController.getLogin
+GET     /logout                     controllers.AccountController.getLogout
+POST    /login                      controllers.AccountController.postLogin
+
+GET     /user                       controllers.AccountController.getUser
+POST    /user                       controllers.AccountController.postUser
+
 
 
 # Map static resources from the /public folder to the /assets URL path

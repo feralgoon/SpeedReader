@@ -1,0 +1,41 @@
+@import models.Source
+@(sources : List[Source])
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/lib/fontawesome/css/fontawesome-all.min.css">
+    <script src="/assets/lib/jquery/jquery.min.js"></script>
+    <script src="/assets/lib/bootstrap/js/bootstrap.min.js"></script>
+    <title>@session().get("User")</title>
+</head>
+@nav.render("User")
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-1 text-center">
+            Submit new Feeds to Database:<br>
+            <form method="post" action="/../user" class="form-control">
+                @helper.CSRF.formField
+                <input type="text" class="form-control" name="newFeed" id="newFeed">
+                <button type="submit" class="btn btn-secondary">Submit</button>
+            </form>
+        </div>
+        <div class="col-md-4 offset-md-2 text-center">
+            Subscribe to existing Feeds:<br>
+            <form method="post" action="/../user" class="form-control" enctype="multipart/form-data">
+                @helper.CSRF.formField
+                <select multiple class="form-control" name="subscribe[]" id="subscribe">
+                    @for(source <- sources) {
+                    <option value="@source.getSourceId">@source.getSourceName</option>
+                    }
+                </select>
+                <button type="submit" class="btn btn-secondary">Subscribe</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
