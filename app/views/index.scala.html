@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/assets/lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/lib/fontawesome/css/fontawesome-all.min.css">
     <link rel="stylesheet" href="/assets/stylesheets/scrolldiv.css">
+    <link rel="stylesheet" href="/assets/stylesheets/favoritestar.css">
     <script src="/assets/lib/jquery/jquery.min.js"></script>
     <script src="/assets/lib/bootstrap/js/bootstrap.min.js"></script>
     <title>Home</title>
@@ -29,11 +30,12 @@
                 <div class="col-12">
                 <a href="@post.getPostLink">@Html(post.getPostTitle)</a></div>
                 <div class="col-12">@Html(post.getPostDescription)</div>
-                <div class="col-12"><a href="/../post/@post.getPostId">Comments </a>@post.getDate</div>
+                <div class="col-12"><i class="far fa-star favorite" id="@post.getPostId"></i><a href="/../post/@post.getPostId">Comments </a>@post.getDate</div>
             </div>
             }
         </div>
     </div>
 </div>
+<script src="/assets/javascripts/favoritebutton.js"></script>
 </body>
 </html>
