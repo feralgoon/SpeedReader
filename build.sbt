@@ -24,6 +24,7 @@ libraryDependencies += "org.mariadb.jdbc" % "mariadb-java-client" % "2.2.5"
 
 libraryDependencies += "org.webjars" % "bootstrap" % "4.1.0"
 libraryDependencies += "org.webjars.bowergithub.chartjs" % "chart.js" % "2.7.2"
+libraryDependencies += "org.webjars" % "font-awesome" % "5.1.0"
 
 libraryDependencies += "com.rometools" % "rome" % "1.10.0"
 
