@@ -14,6 +14,8 @@ POST    /login                      controllers.AccountController.postLogin
 GET     /user                       controllers.AccountController.getUser
 POST    /user                       controllers.AccountController.postUser
 
+GET     /post/:id                   controllers.PostController.getPost(id : Integer)
+
 
 
 # Map static resources from the /public folder to the /assets URL path
