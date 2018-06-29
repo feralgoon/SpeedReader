@@ -119,28 +119,7 @@ public class HomeController extends Controller
                 "ORDER BY Date DESC ";
         List<Post> postList = jpaApi.em().createQuery(sql,Post.class).setParameter("currentUser",currentUser.getPatronId()).setMaxResults(30).getResultList();
 
-        StringBuilder testBuilder = new StringBuilder();
-        testBuilder.append("<div class=\"container\"><div class=\"row\"><div class=\"scrolldiv col-md-10 offset-md-1\">");
-        for(Post post : postList)
-        {
-            testBuilder.append("<div class=\"row border border-success\">");
-            testBuilder.append("<a href=\"");
-            testBuilder.append(post.getPostLink());
-            testBuilder.append("\">");
-            testBuilder.append(post.getPostTitle());
-            testBuilder.append("</a><br>");
-            testBuilder.append(post.getPostDescription());
-            testBuilder.append("<br>");
-            testBuilder.append(post.getDate());
-            testBuilder.append("</div><br>");
-        }
-        testBuilder.append("</div></div></div>");
-        //output.output(feed,new PrintWriter(System.out));
-
-
-        //System.out.println(feed);
-
-        return ok(index.render(Html.apply(testBuilder.toString())));
+        return ok(index.render(postList));
     }
 
 }

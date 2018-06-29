@@ -1,4 +1,5 @@
-@(test : Html)
+@import models.Post
+@(posts : List[Post])
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +21,19 @@
         </div>
     </div>
 </div>
-@test
+<div class="container">
+    <div class="row">
+        <div class="scrolldiv col-md-10 offset-md-1">
+            @for(post <- posts) {
+            <div class="row border border-success">
+                <div class="col-12">
+                <a href="@post.getPostLink">@Html(post.getPostTitle)</a></div>
+                <div class="col-12">@Html(post.getPostDescription)</div>
+                <div class="col-12"><a href="/../post/@post.getPostId">Comments </a>@post.getDate</div>
+            </div>
+            }
+        </div>
+    </div>
+</div>
 </body>
 </html>
