@@ -1,5 +1,6 @@
 @import models.Post
-@(post : Post)
+@import models.CommentDetail
+@(post : Post)(comments : List[CommentDetail])
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,9 +13,43 @@
     <script src="/assets/lib/bootstrap/js/bootstrap.min.js"></script>
     <title>Comments</title>
 </head>
-<body>
 @nav.render("post")
-@post.getPostTitle
-@post.getDate
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <div class="row border">
+                <div class="col-12 text-center">
+                    @Html(post.getPostTitle)
+                </div>
+                <div class="col-12 text-center">
+                    @Html(post.getPostDescription)
+                </div>
+                <div class="col-12 text-center">
+                    @post.getDate
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 offset-md-4 text-center">
+            <form class="form-control" method="post">
+                @helper.CSRF.formField
+                <textarea class="form-control" maxlength="300" name="comment" id="comment"></textarea>
+                <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            @for(comment <- comments) {
+            <div class="row border">
+                <div class="col-12">@Html(comment.getComment)</div>
+                <div class="col-12">@comment.getUsername</div>
+            </div>
+            }
+        </div>
+    </div>
+</div>
 </body>
 </html>

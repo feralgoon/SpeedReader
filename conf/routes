@@ -15,6 +15,7 @@ GET     /user                       controllers.AccountController.getUser
 POST    /user                       controllers.AccountController.postUser
 
 GET     /post/:id                   controllers.PostController.getPost(id : Integer)
+POST    /post/:id                   controllers.PostController.postPost(id : Integer)
 
 
 
