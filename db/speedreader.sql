@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `permissionlevel` (
 -- Dumping structure for table speedreader.post
 CREATE TABLE IF NOT EXISTS `post` (
   `PostId` int(11) NOT NULL AUTO_INCREMENT,
-  `PostLink` varchar(200) NOT NULL,
+  `PostLink` varchar(2000) NOT NULL,
   `PostTitle` varchar(1000) NOT NULL,
   `PostDescription` varchar(5000) DEFAULT NULL,
   `SourceId` int(11) NOT NULL,
