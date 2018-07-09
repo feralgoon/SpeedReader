@@ -1,3 +1,11 @@
 .favorite {
 	color:gold;
 }
+
+.faved {
+    color:gold;
+}
+
+.notfaved {
+    color:white;
+}
